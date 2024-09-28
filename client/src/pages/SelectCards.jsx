@@ -6,11 +6,8 @@ import { shuffledCards } from '../logic/shuffle'
 import TarotCard from '../components/TarotCard'
 import TarotCardNonReveal from '../components/TarotCardNonReveal'
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { marked} from 'marked'
-
-
-
 
 const SelectCards = () => {
     const [timer, setTimer] = useState(null)
@@ -43,11 +40,17 @@ const SelectCards = () => {
   useEffect(() => {
     if (pickedCards.length === choose) {
         const cardsAndMeaning = pickedCards.map((card) => `${card.name}${card.reverse}`).join(', ');
-      setPrompt(`The question asked is "${question}". With ${choose} cards drawn and card name and reverse status: ${cardsAndMeaning}, look up the corresponding tarrot cards and their meaning. \n
-    If there is three cards chosen: follow the past, present, future format. \n
-    If the there is only one card chosen: follow the general meaning of the card. \n
-    If there is four cards:  Combine with the question asked, choose from the "Love" spread, "Finance" spread, and "Self-Development" spread. \n
-    Now, look at the question asked by the user, and interpret the cards accordingly.`)
+      setPrompt(`The user has asked: ${question}. Based on the ${choose} cards drawn (names and reverse statuses: ${cardsAndMeaning}), interpret the Tarot cards by referencing their meanings。
+    For one card, provide a general interpretation related to the question.
+    For three cards, you can use various spreads depending on the context of the question:
+    The classic Past, Present, Future format can be used to explore how past influences, present circumstances, and future potential relate to the situation.
+    Alternatively, for decision-making, use the Situation, Action, Outcome spread, where the first card shows the current situation, the second suggests an action to take, and the third reveals the likely outcome.
+    For self-reflection, apply the Mind, Body, Spirit spread to explore the querent’s mental state, physical condition, and spiritual energy.
+    For navigating challenges, use the Problem, Solution, Result spread, where the first card identifies the problem, the second offers a solution, and the third shows the result if the advice is followed.
+    For four cards, choose a spread based on the question’s theme:
+    If the question relates to relationships, apply the Love Spread (situation, challenges, advice, outcome). For finance or career, use the Finance Spread (current situation, obstacles, opportunities, outcome). For personal growth, use the Self-Development Spread (current self, challenges, advice, potential outcome). You can also use a holistic approach with the Mind, Body, Spirit, Potential Spread for well-being. For general problem-solving, apply the Situation, Challenge, Advice, Outcome or Insight, Challenge, Action, Result format.
+
+    Now, review the question and interpret the cards based on the chosen format for a relevant reading.`)
     }
   }, [pickedCards, choose])
 
@@ -71,7 +74,7 @@ const SelectCards = () => {
         alert('You have reached the maximum calls per minute. Please try again later.')
         return
     }
-    console.log('Prompt:', prompt)
+    // console.log('Prompt:', prompt)
     setCallCount(callCount + 1)
     await handleSendPromptToGemini(prompt)
   }
@@ -97,6 +100,7 @@ const SelectCards = () => {
   return (
     <div>
         <div className='fixed w-screen h-screen bg-gray-900 bg-opacity-80 top-0 left-0 flex items-center justify-center -z-10'/>
+        <Link to='/' className='absolute top-0 left-0 m-4 text-white'>Back</Link>
       <div className='mt-8'>
       <div className={`relative grid grid-cols-${choose} gap-4 w-[90%] left-[5%] right-[5%] justify-items-center align-items-center`}>
         {Array.from({ length: choose }).map((_, index) => (

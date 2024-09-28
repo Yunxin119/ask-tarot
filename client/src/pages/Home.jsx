@@ -38,7 +38,7 @@ const Home = () => {
          }}
          onClick={() => setChoose(1)}
          
-        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 1 ? 'bg-white text-gray-600' : 'bg-gray-300 bg-opacity-30'}`}
+        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 1 ? 'bg-white text-gray-800' : 'bg-gray-300 bg-opacity-30'}`}
         style = {{
         boxShadow: choose === 1 ? '0px 0px 20px rgba(255, 255, 255, 0.8)' : ""
         }}
@@ -56,7 +56,7 @@ const Home = () => {
          }}
          onClick={() => setChoose(3)}
          
-        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 4 ? 'bg-white text-gray-600' : 'bg-gray-300 bg-opacity-30'}`}
+        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 3 ? 'bg-white text-gray-800' : 'bg-gray-300 bg-opacity-30'}`}
         style = {{
         boxShadow: choose === 3 ? '0px 0px 20px rgba(255, 255, 255, 0.8)' : ""
         }}
@@ -74,7 +74,7 @@ const Home = () => {
          }}
          onClick={() => setChoose(4)}
          
-        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 4 ? 'bg-white text-gray-600' : 'bg-gray-300 bg-opacity-30'}`}
+        className={`text-white rounded-lg w-full h-full relative cursor-pointer border-2 border-white border-solid ${choose === 4 ? 'bg-white text-gray-800' : 'bg-gray-300 bg-opacity-30'}`}
         style = {{
         boxShadow: choose === 4 ? '0px 0px 20px rgba(255, 255, 255, 0.8)' : ""
         }}
